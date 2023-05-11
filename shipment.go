@@ -226,7 +226,7 @@ type ShipmentResponse struct {
 	// alerts
 	Alerts []*Alert `json:"alerts,omitempty"`
 	// errors
-	Errors []*Error `json:"errors,omitempty"`
+	Errors []Error `json:"errors,omitempty"`
 }
 
 func (s *ShipmentResponse) Error() string {
@@ -320,7 +320,7 @@ type Error struct {
 	// message
 	Message string `json:"message,omitempty"`
 	// parameterList
-	ParameterList []*ParameterList `json:"parameterList,omitempty"`
+	ParameterList []ParameterList `json:"parameterList,omitempty"`
 }
 
 type ParameterList struct {

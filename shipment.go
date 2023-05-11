@@ -220,18 +220,18 @@ type LabelSpecification struct {
 type ShipmentResponse struct {
 
 	// output
-	Output Output `json:"output,omitempty"`
+	Output *Output `json:"output,omitempty"`
 	// alerts
-	Alerts []Alert `json:"alerts,omitempty"`
+	Alerts []*Alert `json:"alerts,omitempty"`
 	// errors
-	Errors []Error `json:"errors,omitempty"`
+	Errors []*Error `json:"errors,omitempty"`
 }
 
 type Output struct {
 	// transactionShipments
-	TransactionShipments []TransactionShipment `json:"transactionShipments,omitempty"`
+	TransactionShipments []*TransactionShipment `json:"transactionShipments,omitempty"`
 	// alerts
-	Alerts []Alert `json:"alerts,omitempty"`
+	Alerts []*Alert `json:"alerts,omitempty"`
 	// jobId
 	JobId string `json:"jobId,omitempty"`
 }
@@ -248,9 +248,9 @@ type TransactionShipment struct {
 	//masterTrackingNumber
 	MasterTrackingNumber string `json:"masterTrackingNumber,omitempty"`
 	// shipmentDocuments
-	ShipmentDocuments []ShipmentDocument `json:"shipmentDocuments,omitempty"`
+	ShipmentDocuments []*ShipmentDocument `json:"shipmentDocuments,omitempty"`
 	// pieceResponses
-	PieceResponses []PieceResponse `json:"pieceResponses,omitempty"`
+	PieceResponses []*PieceResponse `json:"pieceResponses,omitempty"`
 }
 
 type PieceResponse struct {
@@ -259,7 +259,7 @@ type PieceResponse struct {
 	// packageSequenceNumber
 	PackageSequenceNumber string `json:"packageSequenceNumber,omitempty"`
 	// packageDocuments
-	PackageDocuments []PackageDocument `json:"packageDocuments,omitempty"`
+	PackageDocuments []*PackageDocument `json:"packageDocuments,omitempty"`
 }
 
 type PackageDocument struct {
@@ -295,7 +295,7 @@ type ShipmentDocument struct {
 	// url
 	URL string `json:"url,omitempty"`
 	// alerts
-	Alerts []Alert `json:"alerts,omitempty"`
+	Alerts []*Alert `json:"alerts,omitempty"`
 }
 
 // alerts
@@ -314,7 +314,7 @@ type Error struct {
 	// message
 	Message string `json:"message,omitempty"`
 	// parameterList
-	ParameterList []ParameterList `json:"parameterList,omitempty"`
+	ParameterList []*ParameterList `json:"parameterList,omitempty"`
 }
 
 type ParameterList struct {

@@ -1,5 +1,7 @@
 package fedex
 
+import "fmt"
+
 const shipmentBasePath = "ship/v1/shipments"
 
 type ShipmentServiceOp struct {
@@ -227,6 +229,10 @@ type ShipmentResponse struct {
 	Errors []*Error `json:"errors,omitempty"`
 }
 
+func (s *ShipmentResponse) Error() string {
+	return fmt.Sprintf("%+v", s.Errors)
+}
+
 type Output struct {
 	// transactionShipments
 	TransactionShipments []*TransactionShipment `json:"transactionShipments,omitempty"`
@@ -327,5 +333,8 @@ type ParameterList struct {
 func (s *ShipmentServiceOp) Create(shipment Shipment) (*ShipmentResponse, error) {
 	resource := new(ShipmentResponse)
 	err := s.client.Post(shipmentBasePath, shipment, resource)
+	if resource.Errors != nil {
+		return nil, resource
+	}
 	return resource, err
 }
